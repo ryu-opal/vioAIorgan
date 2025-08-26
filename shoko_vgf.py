@@ -35,4 +35,6 @@ while True:
             """
         ),
     )
+    ai_output = response.text
     print(response.text)
+

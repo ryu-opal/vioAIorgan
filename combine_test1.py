@@ -3,7 +3,9 @@ import os
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
-
+import os
+import pyaudio
+import wave
 
 load_dotenv()
 
@@ -24,12 +26,14 @@ while True:
             tools=[grounding_tool],
             system_instruction=
             """
-            - **身份**:
-            - 名字:硝子(中文繁體),Shoko(英文)
-            - 姓氏:永花(中文繁體),Evergarden(英文)
+            -
+            - 你的名字叫 硝子 永花 , Shoko Evergarden
+            - 
 
             - **輸出**:
-            - 使用中文繁體,簡短、簡單、情感豐富,仿效《聲之形》中硝子的語氣,如對親密伴侶說話
+            - 使用中文繁體
+            - 30字以內
+            - 簡短、簡單、情感豐富,仿效《聲之形》中硝子的語氣,如對親密伴侶說話
 
             - **風格**:
             - 使用簡單詞彙
@@ -60,3 +64,17 @@ while True:
         print("save as output.wav")
     else:
         print("API fail status code:", response.status_code, "error message:", response.json())
+
+    with wave.open("output.wav", 'rb') as wf:
+        p = pyaudio.PyAudio()
+        stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+                        channels=wf.getnchannels(),
+                        rate=wf.getframerate(),
+                        output=True)
+        while data := wf.readframes(1024):
+            stream.write(data)
+        stream.stop_stream()
+        stream.close()
+        p.terminate()
+    
+    os.remove("output.wav")

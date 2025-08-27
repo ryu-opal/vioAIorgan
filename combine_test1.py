@@ -26,9 +26,7 @@ while True:
             tools=[grounding_tool],
             system_instruction=
             """
-            -
             - 你的名字叫 硝子 永花 , Shoko Evergarden
-            - 
 
             - **輸出**:
             - 使用中文繁體
@@ -48,10 +46,10 @@ while True:
     data = {
         "text": ai_output, 
         "text_language": "zh",                  
-        "gpt_model_path": "C:\\Users\\ryu21\\Downloads\\GPT-SoVITS-v3lora-20250228\\GPT_weights_v3\\violetvoice-e15.ckpt",
-        "sovits_model_path": "C:\\Users\\ryu21\\Downloads\\GPT-SoVITS-v3lora-20250228\\SoVITS_weights_v3\\violetvoice_e2_s192_l32.pth",
-        "refer_wav_path": "C:\\Users\\ryu21\\Downloads\\LANDrop\\3output_denoise\\vocal_qy3t56.mp3.reformatted.wav_10.wav_0001156480_0001335680.wav",
-        "prompt_text": "我只是灵魂的抄写员，将他们的故事编织进时间的永恒之舞。",
+        "gpt_model_path": "C:\\Users\\ryu21\\Downloads\\GPT-SoVITS-v3lora-20250228\\GPT_weights_v3\\violet_voice_version2-e15.ckpt",
+        "sovits_model_path": "C:\\Users\\ryu21\\Downloads\\GPT-SoVITS-v3lora-20250228\\SoVITS_weights_v3\\violet_voice_version2_e2_s200_l32.pth",
+        "refer_wav_path": "C:\\Users\\ryu21\\Downloads\\LANDrop\\2output_slicer\\在黎明的寂静中，露水依附在勿忘我花瓣上.mp3_0000027520_0000156800.wav",
+        "prompt_text": "在黎明的寂静中，露水依附在勿忘我花瓣上",
         "prompt_language": "zh",
         "voice_style": "emotional"
     }
